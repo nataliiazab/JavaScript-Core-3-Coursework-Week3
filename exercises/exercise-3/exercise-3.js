@@ -6,3 +6,37 @@ let order = [
   { itemName: "Hot Coffee", quantity: 2, unitPrice: 1.0 },
   { itemName: "Hash Brown", quantity: 4, unitPrice: 0.4 },
 ];
+
+// - In `exercise-3.js`, you have been provided with a takeout order.
+// Write a program that will print out the receipt for this order.
+// - Log each individual item to the console.
+// - Log the total cost of the order to the console.
+
+function receipt(order) {
+  console.log("QTY   ITEM                TOTAL");
+  let totalCost = 0;
+  for ({ itemName, quantity, unitPrice } of order) {
+    totalCost = quantity * unitPrice + totalCost;
+    console.log(
+      `${quantity}     ${itemName.padEnd(20)}${(
+        quantity * unitPrice
+      ).toFixed(2)}`
+    );
+  }
+
+  console.log(`\nTotal: ` + totalCost);
+}
+receipt(order);
+
+// Expected result
+
+// ```
+// QTY     ITEM                TOTAL
+// 1       Hot Cakes           2.29
+// 2       Apple Pie           2.78
+// 1       Egg McMuffin        2.80
+// 1       Sausage McMuffin    3.00
+// 2       Hot Coffee          2.00
+// 4       Hash Brown          1.60
+
+// Total: 14.47
